@@ -79,4 +79,43 @@ function setActiveTab(activeType) {
 
   tabs[activeType].classList.remove('bg-white', 'text-gray-500');
   tabs[activeType].classList.add('bg-blue-500', 'text-white');
-}
+} //using event delegation for action handle 
+
+jobCards.addEventListener('click', function (e) {
+
+  const card = e.target.closest('.card');
+  if (!card) return;
+
+  const badge = card.querySelector('.badge');
+
+  // Interview Click
+  if (e.target.closest('.btn-success')) {
+    badge.innerText = "Interview";
+    badge.className = "badge badge-soft badge-success text-black p-4";
+  }
+
+  // Rejected Click
+  if (e.target.closest('.btn-error')) {
+    badge.innerText = "Rejected";
+    badge.className = "badge badge-soft badge-error text-black p-4";
+  }
+
+  // Delete Click
+  if (e.target.closest('.delete-btn')) {
+    card.remove();
+  }
+
+  updateDashboard();
+});
+
+
+// tab events
+
+Object.keys(tabs).forEach(type => {
+  tabs[type].addEventListener('click', () => filterCards(type));
+});
+
+
+//By default All tab load 
+updateDashboard();
+filterCards("All");
