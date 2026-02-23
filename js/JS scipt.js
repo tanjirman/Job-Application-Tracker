@@ -31,7 +31,10 @@ function updateDashboard() {
   total2.innerText = cards.length + " jobs";
   interviewCount.innerText = interview;
   rejectedCount.innerText = rejected;
-}// toggle function and filter the cards by interview and rejected
+}
+
+
+// toggle function and filter the cards by interview and rejected
 
 function filterCards(type) {
   const cards = document.querySelectorAll('.card');
@@ -69,7 +72,10 @@ function filterCards(type) {
   } else {
     emptyState.classList.add("hidden");
   }
-}// active tab
+}
+
+
+// active tab
 
 function setActiveTab(activeType) {
   Object.keys(tabs).forEach(type => {
@@ -79,7 +85,10 @@ function setActiveTab(activeType) {
 
   tabs[activeType].classList.remove('bg-white', 'text-gray-500');
   tabs[activeType].classList.add('bg-blue-500', 'text-white');
-} //using event delegation for action handle 
+}
+
+
+//using event delegation for action handle 
 
 jobCards.addEventListener('click', function (e) {
 
